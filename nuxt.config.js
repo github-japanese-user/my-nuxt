@@ -42,6 +42,6 @@ export default {
   },
 
   router: {
-    base: process.env.base
+    base: process.env.BASE
   }
 }
