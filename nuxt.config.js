@@ -43,5 +43,9 @@ export default {
 
   router: {
     base: process.env.BASE
+  },
+
+  generate: {
+    dir: process.env.DIR
   }
 }

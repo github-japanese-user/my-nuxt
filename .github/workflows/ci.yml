@@ -48,9 +48,19 @@ jobs:
       - name: Run tests 🧪
         run: yarn test
 
-      - run: BASE=/my-nuxt/ yarn generate
+      - run: yarn generate
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+      - run: yarn generate_ftp
+
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ${{ secrets.FTP_SERVER }}
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist_ftp/
